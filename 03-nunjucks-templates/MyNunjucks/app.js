@@ -31,7 +31,7 @@ app.engine( 'html', nunjucks.render ) ;
 app.set( 'view engine', 'html' ) ;
 
 app.get('/index', function(req, res){
-  client.query('SELECT * From "MyFilmCollection" WHERE "releaseyear" >= 1980' ,
+  client.query('SELECT * From "MyFilmCollection" ' ,
     (err, result) =>
     {
       if(err) {
@@ -39,7 +39,12 @@ app.get('/index', function(req, res){
           res.status(400).send(err);
         }
     dbResult = (result.rows);
-    //res.render('index.html', {name:res.status(200).send(result.rows)});
+
+    let myArr = new Array();
+    myArr = (result.rows.map((item) => item.filmname));
+    console.log(myArr);
+
+    res.render('index.html', {name:JSON.stringify(dbResult)});
     console.log(dbResult);
     //res.render('index.html', {name: (dbResult)});
     });
