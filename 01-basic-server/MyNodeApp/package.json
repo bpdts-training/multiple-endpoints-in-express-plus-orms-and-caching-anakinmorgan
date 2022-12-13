@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/bpdts-training/a-basic-web-server-with-express-anakinmorgan#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.3"
   }
 }
